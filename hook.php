@@ -103,6 +103,12 @@ function plugin_moreldap_item_add_or_update_user($user) {
                                        ? $user->input["user_dn"]
                                        : $user->fields["user_dn"]);
       $sr              = @ldap_read($ldap_connection, $userdn, "objectClass=*", $fields);
+      if (!s_resource($sr)) {
+         Toolbox::logInFile('php-errors', "Plugin MoreLDAP : LDAP Search failed\n"
+               . "before ldap_escape: " . isset($user->input["user_dn"]) ? $user->input["user_dn"] : $user->fields["user_dn"] . "\n"
+               . "after  ldap_escape: $userdn\n");
+         return;
+      }
       $v               = AuthLDAP::get_entries_clean($ldap_connection, $sr);
 
       //Find all locations needed to create the deepest one
