@@ -99,14 +99,16 @@ function plugin_moreldap_item_add_or_update_user($user) {
                               ? $user->input["_ldap_conn"]
                               : $user->fields["_ldap_conn"];
       }
-      $userdn          = ldap_escape(isset($user->input["user_dn"])
+      $userdn          = isset($user->input["user_dn"])
                                        ? $user->input["user_dn"]
-                                       : $user->fields["user_dn"]);
+                                       : $user->fields["user_dn"];
+      $userdn          = str_replace('\\\\', '\\', $userdn);
       $sr              = @ldap_read($ldap_connection, $userdn, "objectClass=*", $fields);
-      if (!is_resource($sr)) {
-         Toolbox::logInFile('php-errors', "Plugin MoreLDAP : LDAP Search failed\n"
-               . "before ldap_escape: " . isset($user->input["user_dn"]) ? $user->input["user_dn"] : $user->fields["user_dn"] . "\n"
-               . "after  ldap_escape: $userdn\n");
+      if (!is_resource($sr) || ldap_errno($ldap_connection) > 0) {
+         $message = "Plugin MoreLDAP : LDAP Search failed\n"
+               . "before ldap_escape: " . (isset($user->input["user_dn"]) ? $user->input["user_dn"] : $user->fields["user_dn"]) . "\n"
+               . "after  ldap_escape: $userdn\n";
+         Toolbox::logInFile('php-errors', $message);
          return;
       }
       $v               = AuthLDAP::get_entries_clean($ldap_connection, $sr);
