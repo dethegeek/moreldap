@@ -71,8 +71,6 @@ function plugin_init_moreldap() {
 
 	   //Add a tab on AuthLDAP items
 	   Plugin::registerClass('PluginMoreldapAuthLDAP', array('addtabon' => 'AuthLDAP'));
-	   
-      $PLUGIN_HOOKS['post_init']['moreldap'] = 'plugin_moreldap_postinit';
 
       // request more attributes from LDAP
       // $PLUGIN_HOOKS['retrieve_more_field_from_ldap']['moreldap'] = "plugin_retrieve_more_field_from_ldap_moreldap";
