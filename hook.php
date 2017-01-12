@@ -1,6 +1,5 @@
 <?php
 /*
- * @version $Id: hook.php 36 2012-08-31 13:59:28Z dethegeek $
 ----------------------------------------------------------------------
 MoreLDAP plugin for GLPI
 ----------------------------------------------------------------------
@@ -26,9 +25,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 @package   MoreLDAP
 @author    the MoreLDAP plugin team
 @copyright Copyright (c) 2014-2014 MoreLDAP plugin team
-@license   GPLv2+
-http://www.gnu.org/licenses/gpl.txt
-@link      https://forge.indepnet.net/projects/moreldap
+@license   GPLv2+ http://www.gnu.org/licenses/gpl.txt
+@link      https://github.com/pluginsGLPI/moreldap
 @link      http://www.glpi-project.org/
 @since     2014
 ------------------------------------------------------------------------
@@ -47,7 +45,7 @@ function plugin_moreldap_install() {
       case '0.1.1' :
          $query = "ALTER TABLE `glpi_plugin_moreldap_authldaps`
              ADD COLUMN `entities_id` INT(11) NOT NULL default  '0',
-   	       ADD COLUMN `is_recursive` INT(1) NOT NULL DEFAULT '0'";
+             ADD COLUMN `is_recursive` INT(1) NOT NULL DEFAULT '0'";
          $DB->query($query) or die($DB->error());
          break;
    }
@@ -67,7 +65,7 @@ function plugin_moreldap_item_add_or_update_user($user) {
 
    //Ignore users without auths_id
    if (!isset($user->input["auths_id"])) return;
-   
+
    // We update LDAP field only if LDAP directory is defined
    if (isset($user->input["locations_id"])) return;
 
