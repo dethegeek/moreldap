@@ -1,6 +1,6 @@
 <?php
 /*
- * @version $Id: configauthldap.php 36 2012-08-31 13:59:28Z dethegeek $
+@version $Id: authldap.php 36 2012-08-31 13:59:28Z dethegeek $
 ----------------------------------------------------------------------
 MoreLDAP plugin for GLPI
 ----------------------------------------------------------------------
@@ -26,8 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 @package   MoreLDAP
 @author    the MoreLDAP plugin team
 @copyright Copyright (c) 2014-2014 MoreLDAP plugin team
-@license   GPLv2+
-http://www.gnu.org/licenses/gpl.txt
+@license   GPLv2+ http://www.gnu.org/licenses/gpl.txt
 @link      https://github.com/pluginsGLPI/moreldap
 @link      http://www.glpi-project.org/
 @since     2014
