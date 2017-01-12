@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 @copyright Copyright (c) 2014-2014 MoreLDAP plugin team
 @license   GPLv2+
 http://www.gnu.org/licenses/gpl.txt
-@link      https://forge.indepnet.net/projects/moreldap
+@link      https://github.com/pluginsGLPI/moreldap
 @link      http://www.glpi-project.org/
 @since     2014
 ------------------------------------------------------------------------
