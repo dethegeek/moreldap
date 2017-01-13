@@ -40,7 +40,7 @@ http://www.gnu.org/licenses/gpl.txt
 function plugin_moreldap_DatabaseInstall()
 {
    global $DB;
-   
+
    $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_moreldap_config` (
                `id` int(11) NOT NULL auto_increment,
                `name` varchar(64) UNIQUE NOT NULL default '0',
@@ -64,7 +64,7 @@ function plugin_moreldap_DatabaseInstall()
               CHARSET=utf8
               COLLATE=utf8_unicode_ci";
    $DB->query($query) or die($DB->error());
-   
+
    $query = "INSERT INTO `glpi_plugin_moreldap_config`
              SET `name`='Version', `value`='" . PLUGIN_MORELDAP_VERSION ."'";
    $DB->query($query) or die($DB->error());
@@ -73,11 +73,11 @@ function plugin_moreldap_DatabaseInstall()
 function plugin_moreldap_DatabaseUninstall()
 {
    global $DB;
-   
+
    $query = "DROP TABLE IF EXISTS `glpi_plugin_moreldap_config`";
    $DB->query($query) or die($DB->error());
-    
+
    $query = "DROP TABLE IF EXISTS `glpi_plugin_moreldap_authldaps`";
    $DB->query($query) or die($DB->error());
-    
+
 }

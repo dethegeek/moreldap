@@ -41,9 +41,9 @@ class PluginMoreldapAuthLDAP extends CommonDBTM {
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
       global $LANG;
-      
+
       $tabNames = array();
-      
+
       if (in_array(get_class($item), array("AuthLDAP"))) {
          $tabNames = array(1 => __("MoreLDAP configuration", "moreldap"));
       } else {
@@ -54,27 +54,27 @@ class PluginMoreldapAuthLDAP extends CommonDBTM {
 
    function preconfig($type = '') {
       switch ($type) {
-      	default:
-      	   $this->fields['location'] = 'PhysicalDeliveryOfficeName';
-      	   $this->fields['location_enabled'] = 'N';
-      	   $this->fields['entities_id'] = 0;
-      	   $this->fields['is_recursive'] = 0;
+         default:
+            $this->fields['location'] = 'PhysicalDeliveryOfficeName';
+            $this->fields['location_enabled'] = 'N';
+            $this->fields['entities_id'] = 0;
+            $this->fields['is_recursive'] = 0;
       }
    }
-   
+
    static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
-   
+
       if (in_array(get_class($item), array("AuthLDAP"))) {
          $AuthLDAP = new PluginMoreldapAuthLDAP;
-         
+
          if (!$AuthLDAP->getFromDB($item->fields['id'])) {
             //The directory exists in GLPI but there is no data in the plugin
             $AuthLDAP->preconfig();
-            
+
          }
-         
+
          $location_enabled = ($AuthLDAP->fields['location_enabled'] == 'Y') ? ' checked' : '';
-         
+
          echo '<div class="spaced">';
          echo '<form id="items" name="items" method="post" action="' . Toolbox::getItemTypeFormURL(__CLASS__). '">';
          echo '<table class="tab_cadre_fixehov">';
@@ -100,8 +100,8 @@ class PluginMoreldapAuthLDAP extends CommonDBTM {
          echo '</table>';
          Html::closeForm();
          echo "</div>";
-      } 
+      }
       return true;
    }
-    
+
 }

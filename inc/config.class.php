@@ -39,9 +39,9 @@ http://www.gnu.org/licenses/gpl.txt
 
 class PluginMoreldapConfig extends CommonDBTM {
 
-	// Type reservation : https://forge.glpi-project.org/projects/plugins/wiki/PluginTypesReservation
-	// Reserved range   : none
-	const RESERVED_TYPE_RANGE_MIN = 0;
-	const RESERVED_TYPE_RANGE_MAX = 0;
+   // Type reservation : https://forge.glpi-project.org/projects/plugins/wiki/PluginTypesReservation
+   // Reserved range   : none
+   const RESERVED_TYPE_RANGE_MIN = 0;
+   const RESERVED_TYPE_RANGE_MAX = 0;
 
 }

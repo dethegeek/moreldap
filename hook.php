@@ -47,7 +47,7 @@ function plugin_moreldap_install() {
       case '0.1.1' :
          $query = "ALTER TABLE `glpi_plugin_moreldap_authldaps`
              ADD COLUMN `entities_id` INT(11) NOT NULL default  '0',
-   	       ADD COLUMN `is_recursive` INT(1) NOT NULL DEFAULT '0'";
+             ADD COLUMN `is_recursive` INT(1) NOT NULL DEFAULT '0'";
          $DB->query($query) or die($DB->error());
          break;
    }
@@ -67,7 +67,7 @@ function plugin_moreldap_item_add_or_update_user($user) {
 
    //Ignore users without auths_id
    if (!isset($user->input["auths_id"])) return;
-   
+
    // We update LDAP field only if LDAP directory is defined
    if (isset($user->input["locations_id"])) return;
 
